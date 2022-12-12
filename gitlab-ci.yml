@@ -1,0 +1,17 @@
+stages:
+  - init
+  - despliegue
+
+hello:
+  stage: init
+  tags:
+    - lagoleta
+  script:
+    - echo "Init OK"
+
+deploy:
+  stage: despliegue
+  tags:
+    - lagoleta
+  script:
+    - ssh -p 5353 root@192.168.18.2 "cd /var/www/lagoleta.com.ar; git pull http://david:david12345@gitlab.nclsistemas.com.ar/ncl-dev-group/lagoleta.git; chown -R www-data:www-data /var/www/lagoleta.com.ar/; find /var/www/lagoleta.com.ar/ -type d -exec chmod 0755 {} \; ; find /var/www/lagoleta.com.ar/ -type f -exec chmod 0644 {} \;"

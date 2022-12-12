@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "para-icons-v2-webfont";
+    src: url("./mi-icon-v2/para-icons-v2-webfont.woff2");
+}
+
+@layer components {
+    .button [aria-hidden="true"] {
+    display: none;
+    }
+}
